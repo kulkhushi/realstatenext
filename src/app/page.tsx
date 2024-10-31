@@ -1,14 +1,14 @@
-import SettingStandrad from "@/Components/Home/SettingStandrad";
-import HeroSection from "../Components/Home/HeroSection";
-import Numbers from "@/Components/Home/Numbers";
-import AboutHome from "@/Components/Home/AboutHome";
-import PropertySlider from "@/Components/Home/PropertySlider";
-import Clwantail from "@/Components/Home/Clwantail";
-import Brand from "@/Components/Home/Brand";
-import AreaExpertise from "@/Components/Home/AreaExpertise";
-import ExclusiveList from "@/Components/Home/ExclusiveList";
-import ReceiveInbox from "@/Components/Home/ReceiveInbox";
-import HomeNews from "@/Components/Home/HomeNews";
+import SettingStandrad from "@/components/Home/SettingStandrad";
+import HeroSection from "../components/Home/HeroSection";
+import Numbers from "@/components/Home/Numbers";
+import AboutHome from "@/components/Home/AboutHome";
+import PropertySlider from "@/components/Home/PropertySlider";
+import Clwantail from "@/components/Home/Clwantail";
+import Brand from "@/components/Home/Brand";
+import AreaExpertise from "@/components/Home/AreaExpertise";
+import ExclusiveList from "@/components/Home/ExclusiveList";
+import ReceiveInbox from "@/components/Home/ReceiveInbox";
+import HomeNews from "@/components/Home/HomeNews";
 
 export default function Home() {
   return (

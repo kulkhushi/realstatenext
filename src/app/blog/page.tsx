@@ -1,8 +1,8 @@
-import BlogCard from "@/Components/BlogCard";
-import BreadcumBanner from "@/Components/Global/BreadcumBanner";
-import Container from "@/Components/Global/Container";
-import Sidebar from "@/Components/Global/Sidebar";
-import ReceiveInbox from "@/Components/Home/ReceiveInbox";
+import BlogCard from "@/components/BlogCard";
+import BreadcumBanner from "@/components/Global/BreadcumBanner";
+import Container from "@/components/Global/Container";
+import Sidebar from "@/components/Global/Sidebar";
+import ReceiveInbox from "@/components/Home/ReceiveInbox";
 
 const posts = [
   {

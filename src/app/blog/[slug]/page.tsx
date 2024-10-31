@@ -1,6 +1,6 @@
-import Breadcrumb from "@/Components/Global/BreadcrumbLinks";
-import Sidebar from "@/Components/Global/Sidebar";
-import ReceiveInbox from "@/Components/Home/ReceiveInbox";
+import Breadcrumb from "@/components/Global/BreadcrumbLinks";
+import Sidebar from "@/components/Global/Sidebar";
+import ReceiveInbox from "@/components/Home/ReceiveInbox";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";

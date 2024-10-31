@@ -1,9 +1,9 @@
-import Header from "@/Components/Layout/Header";
+import Header from "@/components/Layout/Header";
 import "./globals.css";
 import { Montserrat,Tenor_Sans } from 'next/font/google'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Footer from "@/Components/Layout/Footer";
+import Footer from "@/components/Layout/Footer";
 
 const montserrat = Montserrat({ 
   subsets: ['latin','cyrillic',"latin-ext"],
