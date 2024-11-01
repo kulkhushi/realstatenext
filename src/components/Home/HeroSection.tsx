@@ -23,7 +23,7 @@ const HeroSection = () => {
     >
       <video
         className=""
-        poster="https://res.cloudinary.com/luxuryp/videos/f_auto,q_auto/so_0,eo_0/h2w1ffvxoxlpw6nzd5wx/website-unbranded-1-1.jpg"
+        src="https://res.cloudinary.com/luxuryp/videos/f_webm,vc_vp9,q_auto/h2w1ffvxoxlpw6nzd5wx/website-unbranded-1-1.webm"
         style={{
           height: '100%',  // Full height of the parent container
           width: '100%',   // Full width

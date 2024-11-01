@@ -1,5 +1,5 @@
 
-const BreadcumBanner = ({bgLogo}:{bgLogo?:string}) => {
+const BreadcumBanner = ({bgLogo,pageTitle,description}:{bgLogo?:string;pageTitle:string;description?:string}) => {
     const sectionStyle = {
         background: `url(${bgLogo?bgLogo:'https://res.cloudinary.com/luxuryp/images/f_auto,q_auto/gyommycouuod40setpi0/rl-bg'})`,
         WebkitBackgroundSize: 'cover',
@@ -14,12 +14,12 @@ const BreadcumBanner = ({bgLogo}:{bgLogo?:string}) => {
   return (
     <div
     style={sectionStyle}
-    className="relative  text-white h-[calc(60vh)]"
+    className="relative  text-white h-[calc(70vh)]"
   >
-    <div className="flex items-center justify-center h-full bg-black bg-opacity-40 w-full px-6 pt-16 pb-12">
+    <div className="flex items-center justify-center h-full bg-black bg-opacity-40 w-full px-6 pt-16 pb-16">
       <div className="flex flex-col items-center space-y-6">
-        <h1 className="text-7xl font-tenor_Sans tracking-[6px]">Blog</h1>
-        <p>Consistently recognized as a top producing agent in The Wellington County.</p>
+        <h1 className="text-7xl font-tenor_Sans tracking-[6px] uppercase">{pageTitle}</h1>
+        {description && <p>{description}</p> }
       </div>
     </div>
   </div>

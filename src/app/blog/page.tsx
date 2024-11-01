@@ -38,7 +38,7 @@ const posts = [
 const BlogPage = () => {
   return (
     <div>
-      <BreadcumBanner bgLogo="https://res.cloudinary.com/luxuryp/images/f_auto,q_auto/gg5lqgxfs8n9uajak0pp/portfolio" />
+      <BreadcumBanner pageTitle="Blog" bgLogo="https://res.cloudinary.com/luxuryp/images/f_auto,q_auto/gg5lqgxfs8n9uajak0pp/portfolio" />
       <div className="flex flex-col justify-center py-10 items-center ">
         <h2 className="text-center text-5xl font-tenor_Sans tracking-[5px] text-white py-10">
           Featured Posts

@@ -14,7 +14,6 @@ type InputProps<T extends FieldValues> = {
 const Input = <T extends FieldValues>({
   id,
   type = 'text',
-
   placeholder,
   classes = '',
   defaultValue,

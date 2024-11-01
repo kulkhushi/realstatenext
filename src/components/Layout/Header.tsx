@@ -4,14 +4,16 @@ import SlideMenu from "./SlideMenu";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AlignRight } from "lucide-react";
+import FullScreenModal from "../Global/Modal";
+import useFullscreenhook from "../Hook/useFullscreenhook";
 
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
   const [currentScroll, setCurrentScroll] = useState(0);
-  const [isMenuOpen,setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const prevScrollY = useRef(0);
-      // Function to toggle the menu
-
+  const { closeModal, isOpen, openModal } = useFullscreenhook();
+  // Function to toggle the menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +74,7 @@ const Header = () => {
                 <ul className="tracking-wide flex-col flex lg:flex-row gap-4 lg:gap-0 uppercase items-center text-[13px]">
                   <li>
                     <Link
-                      href="#features"
+                      href="/home-valuation"
                       className="block md:px-4 transition hover:underline text-white tracking-[3px]"
                     >
                       <span>Home Valuation</span>
@@ -88,10 +90,10 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      href="#features"
+                      href="/about"
                       className="block md:px-4 transition hover:underline text-white tracking-[3px]"
                     >
-                      <span>About Rahul</span>
+                      <span>About Ashfaq</span>
                     </Link>
                   </li>
                   <li>
@@ -102,7 +104,7 @@ const Header = () => {
                       <span>Blog</span>
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={openModal}>
                     <Link
                       href="#features"
                       className="block md:px-4 transition hover:underline text-white tracking-[3px]"
@@ -113,15 +115,28 @@ const Header = () => {
                 </ul>
               </div>
               <div className="mt-0 lg:mt-0 z-40">
-                <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="p-0 text-white">
-                  <AlignRight  size={32} />
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="p-0 text-white"
+                >
+                  <AlignRight size={32} />
                 </button>
               </div>
             </div>
           </div>
         </nav>
       </header>
-      <SlideMenu isMenuOpen={isMenuOpen} onCLick={()=> setIsMenuOpen(!isMenuOpen)} />
+      <FullScreenModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        bgImage="https://res.cloudinary.com/luxuryp/images/w_1920,c_limit,f_auto,q_auto/u1sxmj3pbwxwzzuw7zf8/rahull"
+      >
+        <h2>fgfgfg</h2>
+      </FullScreenModal>
+      <SlideMenu
+        isMenuOpen={isMenuOpen}
+        onCLick={() => setIsMenuOpen(!isMenuOpen)}
+      />
     </>
   );
 };
