@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { AlignRight } from "lucide-react";
 import FullScreenModal from "../Global/Modal";
 import useFullscreenhook from "../Hook/useFullscreenhook";
+import ContactModal from "../ContactModal";
 
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
@@ -131,7 +132,7 @@ const Header = () => {
         closeModal={closeModal}
         bgImage="https://res.cloudinary.com/luxuryp/images/w_1920,c_limit,f_auto,q_auto/u1sxmj3pbwxwzzuw7zf8/rahull"
       >
-        <h2>fgfgfg</h2>
+       <ContactModal/>
       </FullScreenModal>
       <SlideMenu
         isMenuOpen={isMenuOpen}

@@ -122,3 +122,15 @@ body {
 .BlogDetails li:not(:first-of-type)::before {
   padding-top: 32px;
 }
+
+
+.modalForm:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 1px;
+  background: #999999;
+  height: calc(100% + 50px);
+  left: -48px;
+  top: -20px;
+}
