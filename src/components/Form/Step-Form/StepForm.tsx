@@ -6,6 +6,9 @@ import ReactSelect from "@/components/Global/ReactSelect";
 import SubmitButton from "@/components/Global/SubmitButton";
 import Steps from "@/components/HomeValuation/Steps";
 import { useState } from "react";
+import { useForm,SubmitHandler, FieldValues} from "react-hook-form";
+import GooglePlacesAutocomplete from "../MapAddress";
+
 
 const options = [
   { value: "now", label: "I want to sell my home now" },
@@ -21,7 +24,23 @@ export enum STEPS {
 }
 
 const StepForm = () => {
-  const [currentStep, setCurrentStep] = useState<number>(STEPS.LAST_MESSAGE);
+  const [currentStep, setCurrentStep] = useState<number>(STEPS.LOCATION_SEARCH);
+
+  const {register,handleSubmit,watch, setValue, formState:{
+    errors
+  }} = useForm<FieldValues>({
+    defaultValues:{
+      propertyname:'',
+      name:'',
+      email:'',
+      phone:'',
+      time:'',
+      terms:false
+    }
+  })
+  const onSubmit:SubmitHandler<FieldValues>=(data)=>{
+      console.log(data)
+  }
 
   const formNext = () => {
     if (currentStep === STEPS.LOCATION_SEARCH) {
@@ -34,8 +53,10 @@ const StepForm = () => {
     <div className="w-full lg:w-[60rem] m-auto">
       <Steps currentStep={currentStep} />
 
+      {}
+
       <div className="mt-16 flex flex-col items-center justify-center">
-        <form className="w-full ">
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           {currentStep === STEPS.LOCATION_SEARCH && (
             <div className="flex flex-col mt-[4rem] space-y-16 justify-center items-center">
               <h1 className="text-4xl font-tenor_Sans tracking-[4px] uppercase">
@@ -46,7 +67,9 @@ const StepForm = () => {
                   <label className="uppercase text-white text-lg font-bold">
                     PROPERTY ADDRESS
                   </label>
+                  <GooglePlacesAutocomplete onPlaceSelected={()=>{}}/>
                   <input
+                  {...register("propertyname",{required:true})}
                     type="text"
                     id="propertyname"
                     name="propertyname"
@@ -78,9 +101,10 @@ const StepForm = () => {
                     FULL NAME:
                   </label>
                   <input
+                   {...register("name",{required:true})}
                     type="text"
-                    id="propertyname"
-                    name="propertyname"
+                    id="name"
+                    name="name"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -89,9 +113,10 @@ const StepForm = () => {
                     EMAIL ADDRESS:
                   </label>
                   <input
+                   {...register("email",{required:true})}
                     type="text"
-                    id="propertyname"
-                    name="propertyname"
+                    id="email"
+                    name="email"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -100,9 +125,10 @@ const StepForm = () => {
                     PHONE NUMBER:
                   </label>
                   <input
+                   {...register("phone",{required:true})}
                     type="text"
-                    id="propertyname"
-                    name="propertyname"
+                    id="phone"
+                    name="phone"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -111,12 +137,17 @@ const StepForm = () => {
                   <label className="uppercase text-white text-md font-bold">
                     TIME FRAME: (Optional):
                   </label>
-                  <ReactSelect options={options} />
+                  <ReactSelect options={options}  {...register("time")}  />
                 </div>
 
                 <div className="w-2/4 flex-col flex">
                   <div className="text-xs text-gray-400 mb-4">
-                    <input type="checkbox" className="mr-2" />
+                  <input 
+  type="checkbox" 
+  className="mr-2" 
+  required 
+  {...register("terms", { required: true })} 
+/>  
                     <span className="font-bold !text-justify">
                       By providing Rahul Luthra your contact information, you
                       acknowledge and agree to our{" "}

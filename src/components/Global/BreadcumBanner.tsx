@@ -19,7 +19,7 @@ const BreadcumBanner = ({bgLogo,pageTitle,description}:{bgLogo?:string;pageTitle
     <div className="flex items-center justify-center h-full bg-black bg-opacity-40 w-full px-6 pt-16 pb-16">
       <div className="flex flex-col items-center space-y-6">
         <h1 className="text-7xl font-tenor_Sans tracking-[6px] uppercase">{pageTitle}</h1>
-        {description && <p>{description}</p> }
+        {description && <p className="font-tenor_Sans text-xl">{description}</p> }
       </div>
     </div>
   </div>

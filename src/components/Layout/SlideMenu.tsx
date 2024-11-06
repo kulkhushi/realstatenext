@@ -14,11 +14,11 @@ const pages = [
   {
     label: "RESOURCES",
     subMenu: [
-      { url: "/resources/buyers-guide", label: "BUYER'S GUIDE" },
-      { url: "/resources/sellers-guide", label: "SELLER'S GUIDE" },
+      { url: "/buyers", label: "BUYER'S GUIDE" },
+      { url: "/sellers", label: "SELLER'S GUIDE" },
     ],
   },
-  { url: "/press-media", label: "PRESS & MEDIA" },
+  { url: "/press", label: "PRESS & MEDIA" },
   { url: "/testimonials", label: "TESTIMONIALS" },
   { url: "/lets-connect", label: "LET'S CONNECT" },
   { url: "/my-search-portal", label: "MY SEARCH PORTAL" },

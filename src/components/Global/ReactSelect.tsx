@@ -2,7 +2,7 @@ import Select from "react-select";
 
 type SelectPropsType = {
     value:string;
-    label:string;
+    label:string;    
 }
 
 
@@ -38,9 +38,11 @@ const customStyles = {
       }),
 };
 
-const ReactSelect = ({options}:{options:SelectPropsType[]}) => {
+const ReactSelect = ({options,name}:{options:SelectPropsType[];name:string}) => {
   return (
+    
     <Select
+    name={name}
     options={options}
     placeholder=""
     styles={customStyles}

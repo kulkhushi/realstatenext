@@ -1,9 +1,101 @@
+'use client'
+
 import { Mail, NotebookTabs,Map } from "lucide-react";
 import SocialProfile from "./Global/SocialProfile";
 import SubmitButton from "./Global/SubmitButton";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const ContactModal = () => {
+
+
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const username = "fka_14ESHTn27sUXTKaM5j931eKedZancWgjz2"; // Replace with your actual username
+  const password = ""; // Replace with your actual password (store securely)
+
+  // Consider using environment variables for username and password for better security
+  const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');
+
+  const formHandleSubmit=async (e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+   // console.log(e.currentTarget);
+
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const message = formData.get('message');
+
+   console.log(formData)
+  // return;
+
+    try {
+      const response = await fetch('https://api.followupboss.com/v1/events', {  
+        method:"POST",     
+        headers: {
+          Authorization: `Basic ${basicAuth}`,
+          'Content-Type': 'application/json' // Ensure Content-Type is specified for JSON
+        },
+        redirect: 'manual', // Prevent automatic redirects
+        body:JSON.stringify({        
+          "message": `${message}`,
+          "person": {
+              "firstName": `${name}`,
+              "lastName":  `${name}`,
+              "emails": [{"value": `${email}`}],
+              "phones": [{"value": `${phone}`}]
+          }
+      })
+      });
+
+      if (!response.ok) {
+        console.log(error)
+      }
+
+      const data = await response.json();
+      console.log(data)
+
+    } catch (err:any) {
+      setError(err?.message);
+    } finally {
+      setIsLoading(false);
+    }
+
+  }
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('https://api.followupboss.com/v1/me', {
+  //         headers: {
+  //           Authorization: `Basic ${basicAuth}`,
+  //         },
+  //       });
+
+  //       if (!response.ok) {
+  //         throw new Error(`${response.status}`);
+  //       }
+
+  //       const data = await response.json();
+  //       setUserData(data);
+  //     } catch (err:any) {
+  //       setError(err?.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  console.log('setUserData',setUserData)
+
+
   return (
     <div className="text-white flex items-start justify-center p-4">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-16 py-12">
@@ -62,7 +154,7 @@ const ContactModal = () => {
         {/* Submit a Message Section */}
         <div className="col-span-6 px-3 md:px-11 modalForm relative">
         <h1 className="text-4xl font-tenor_Sans tracking-[4px] mb-4 pt-16 lg:pt-0">SUBMIT A MESSAGE</h1>
-          <form className="flex flex-col mt-9  ">          
+          <form className="flex flex-col mt-9" onSubmit={formHandleSubmit}>          
                 <div className="flex flex-col mt-10">
                   <label className="uppercase text-white text-md font-bold">
                     FULL NAME:
@@ -70,7 +162,7 @@ const ContactModal = () => {
                   <input
                     type="text"
                     id="propertyname"
-                    name="propertyname"
+                    name="name"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -81,7 +173,7 @@ const ContactModal = () => {
                   <input
                     type="text"
                     id="propertyname"
-                    name="propertyname"
+                    name="email"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -92,7 +184,7 @@ const ContactModal = () => {
                   <input
                     type="text"
                     id="propertyname"
-                    name="propertyname"
+                    name="phone"
                     className={` bg-transparent border-b border-white text-white focus:border-white focus:outline-none leading-[4rem] focus:bg-transparent h-9`}
                   />
                 </div>
@@ -102,6 +194,7 @@ const ContactModal = () => {
                   Message:
                   </label>
                   <textarea
+                  name="message"
               placeholder="Message"
               rows={4}
               className="w-full bg-transparent p-3 mt-3 focus:outline-none ring-1 ring-white"
